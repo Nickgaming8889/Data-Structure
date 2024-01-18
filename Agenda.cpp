@@ -9,8 +9,7 @@ struct Agenda{
     char direction[100];
 }reg[10];
 
-static int index = 0;
-int id = 1, position = 0;
+int index1 = 0, id = 1, position = 0;
 
 int Menu() {
     int op;
@@ -30,16 +29,16 @@ int Menu() {
 }
 
 void Registar() {
-    reg[index].id = id ++;
+    reg[index1].id = id ++;
 
     cout << "Ingrese el nombre" << endl;
-    cin >> reg[index].nombre;
+    cin >> reg[index1].nombre;
     cout << "Ingrese telefono" << endl;
-    cin >> reg[index].telefono;
+    cin >> reg[index1].telefono;
     cout << "Ingrese direccion" << endl;
-    cin >> reg[index].direction;
+    cin >> reg[index1].direction;
 
-    index++;
+    index1++;
 }
 
 bool Buscar(int id) {
@@ -55,6 +54,25 @@ bool Buscar(int id) {
     }
 
     return ban;
+}
+
+void Edit() {
+
+}
+
+void Detele() {
+
+}
+
+void List() {
+    int position;
+
+    for (position = 0; position <= index1; ++position) {
+        cout << "id: " << reg[position].id << endl;
+        cout << "Nombre: " << reg[position].nombre << endl;
+        cout << "Telefono: " << reg[position].telefono << endl;
+        cout << "Direccion: " << reg[position].direction << endl;
+    }
 }
 
 void Mostrar(int position) {

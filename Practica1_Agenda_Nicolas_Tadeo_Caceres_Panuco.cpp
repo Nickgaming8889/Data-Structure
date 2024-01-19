@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 using namespace std;
 
 struct Agenda{
@@ -56,12 +57,77 @@ bool Buscar(int id) {
     return ban;
 }
 
-void Edit() {
+bool nameSearch(char nombre[90]) {
+    int x = 0;
+    bool ban = false;
 
+    while (x < 10 && ban == false) {
+        if (strcmp(reg[x].nombre, nombre) == 0) {
+            position = x;
+            ban = true;
+        }
+        x++;
+    }
+    
+    return ban;
 }
 
-void Detele() {
+void Edit(int position) {
+    int op;
+    do {
+        cout << "Que deseas modificar?" << endl;
+        cout << "1. Nombre" << endl;
+        cout << "2. Telefono" << endl;
+        cout << "3. Direccion" << endl;
+        cout << "4. Salir" << endl;
 
+        cout << "Seleccione la opcion: " << endl;
+        cin >> op;
+
+        switch (op) {
+        case 1:
+                cout << "Ingrese el nuevo nombre: " << endl;
+                cin >> reg[position].nombre;
+            break;
+        case 2:
+                cout << "Ingrese el nuevo telefono: " << endl;
+                cin >> reg[position].telefono;
+            break;
+        case 3:
+                cout << "Ingrese la nueva direccion: " << endl;
+                cin >> reg[position].direction;
+            break;
+        default:
+            break;
+        }
+
+    }while (op != 4);
+}
+
+void Detele(int position) {
+    for (int i = position; i < index1 - 1; i++) {
+        reg[i] = reg[i + 1];
+    }
+
+    index1--;
+
+    if (index1 == 0 || reg[position].id > id) {
+        id = 0;
+    }
+    else {
+        id = reg[position].id + 1;
+    }
+
+    cout << "Eliminacion completa" << endl;
+
+    for (int j = 0; j < index1; j++) {
+        if (j < index1) {
+            reg[j].id--;
+        }
+        else {
+            reg[j].id = reg[j - 1].id;
+        }
+    }
 }
 
 void List() {
@@ -94,14 +160,54 @@ int main(int argc, char const *argv[])
                 Registar();
             break;
         case 2: {
-                cout << "Ingrese el Id: " << endl;
+                int op3_;
+                cout << "Porque desea buscar? " << endl;
+                cout << "1.Id" << endl;
+                cout << "2.Nombre" << endl;
+
+                cout << "Seleccione la opcion: " << endl;
+                cin >> op3_;  
+                switch (op3_) {
+                case 1:
+                        cout << "Ingrese el Id: " << endl;
+                        cin >> id_;
+                        if (Buscar(id_)) {
+                        Mostrar(position);
+                        }
+                        else 
+                        cout << "No existe el registro" << endl;
+                    break;
+                case 2: 
+                        char nombre_[90];
+                        cout << "Ingrese el nombre: " << endl;
+                        cin >> nombre_;
+                        if (nameSearch(nombre_)) {
+                            Mostrar(position);
+                        }
+                        
+                    break;
+                default:
+                    break;
+                }
+        }   break;
+        case 3:
+                cout << "Ingrese el Id a modificar: " << endl;
                 cin >> id_;
                 if (Buscar(id_)) {
-                    Mostrar(position);
+                    Edit(position);
                 }
-                else 
-                cout << "No existe el registro" << endl;
-        }   break;
+                else
+                    cout << "No existe el registro" << endl;
+            break;
+        case 4:
+                cout << "Que registro quieres eliminar" << endl;
+                cin >> id_;
+                if (Buscar(id_)) {
+                    Detele(position);
+                }
+                else
+                    cout << "Registro inexistente" << endl;
+            break;
         case 5:
             List();
             break;

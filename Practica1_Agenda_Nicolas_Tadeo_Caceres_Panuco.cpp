@@ -67,7 +67,7 @@ void Detele() {
 void List() {
     int position;
 
-    for (position = 0; position <= index1; ++position) {
+    for (position = 0; position < index1; ++position) {
         cout << "id: " << reg[position].id << endl;
         cout << "Nombre: " << reg[position].nombre << endl;
         cout << "Telefono: " << reg[position].telefono << endl;
@@ -91,19 +91,21 @@ int main(int argc, char const *argv[])
         op_ = Menu();
         switch (op_) {
         case 1:
-            Registar();
+                Registar();
             break;
         case 2: {
-            cout << "Ingrese el Id: " << endl;
-            cin >> id_;
-            if (Buscar(id_)) {
-                Mostrar(position);
-            }
-            else 
+                cout << "Ingrese el Id: " << endl;
+                cin >> id_;
+                if (Buscar(id_)) {
+                    Mostrar(position);
+                }
+                else 
                 cout << "No existe el registro" << endl;
-        } break;
+        }   break;
+        case 5:
+            List();
+            break;
         }
-
         cout << "Continuar 1[Si] 6[No]" << endl;
         cin >> op2_;
     } while (op2_ != 6);

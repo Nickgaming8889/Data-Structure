@@ -2,14 +2,14 @@
 
 int fact(int*);
 
-int main(int argc, char const *argv[]) {
+int main() {
     int a;
 
     std::cout << "Give a number: ";
     std::cin >> a;
     int *pa = &a;
     
-    std::cout << fact(pa);
+    std::cout << fact(pa) << std::endl;
     return 0;
 }
 

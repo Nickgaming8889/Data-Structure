@@ -1,67 +1,65 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
-//Mediante esta funcion capturaremos las calificaciones...
-void captureGrades(vector<double>& grade_) {
-    int numGrades;
 
-    cout << "Numero de calificaciones a guardar: ";
-    cin >> numGrades;
-
-    grade_.resize(numGrades);
-    
-    for (int i = 0; i <= numGrades; i++) {
-        cout << "Add the grade " << i + 1 << ": ";
-        cin >> grade_[i];
+void capturarCalificaciones(double* calificaciones, int numeroCalificaciones) {
+    for (int i = 0; i < numeroCalificaciones; i++) {
+        cout << "Ingrese la calificación " << i + 1 << ": ";
+        cin >> calificaciones[i];
     }
-    
 }
 
-//Promediamos...
-double average(vector<double>& grade_) {
-    double myaverage;
-    for (double grade : grade_) {
-        myaverage += grade;
+double calcularPromedio(double* calificaciones, int numeroCalificaciones) {
+    double suma = 0;
+    for (int i = 0; i < numeroCalificaciones; i++) {
+        suma += calificaciones[i];
     }
-
-    return myaverage / grade_.size();
+    return suma / numeroCalificaciones;
 }
 
-double bestGrade(vector<double>& grade_) {
-    double best = grade_[0];
-    for (int i = 1; i < grade_.size(); i++) {
-        if (grade_[i] > best)
-            best = grade_[i];
+double encontrarMejorCalificacion(double* calificaciones, int numeroCalificaciones) {
+    double mejorCalificacion = calificaciones[0];
+    for (int i = 1; i < numeroCalificaciones; i++) {
+        if (calificaciones[i] > mejorCalificacion) {
+        mejorCalificacion = calificaciones[i];
+        }
     }
-
-    return best;
+    return mejorCalificacion;
 }
 
-int reproved(vector<double>& grade_) {
-    int rep = 0;
-    for (double grade : grade_) {
-        if (grade < 60)
-            rep++;
+int contarReprobados(double* calificaciones, int numeroCalificaciones) {
+    int reprobados = 0;
+    for (int i = 0; i < numeroCalificaciones; i++) {
+        if (calificaciones[i] < 60) {
+        reprobados++;
+        }
     }
-
-    return rep;
+    return reprobados;
 }
 
-int main(int argc, char const *argv[]) {
-    vector<double> grades;
-    double average_;
-    double bestScore;
-    int reprovedNum;
+int main() {
+    int numeroCalificaciones;
+    double* calificaciones;
+    double promedio;
+    double mejorCalificacion;
+    int numeroReprobados;
 
-    captureGrades(grades);
-    average_ = average(grades);
-    bestScore = bestGrade(grades);
-    reprovedNum = reproved(grades);
+    cout << "Ingrese el número de calificaciones: ";
+    cin >> numeroCalificaciones;
 
-    cout << "Promedio: " << average_ << endl;
-    cout << "Mejor calificacion: " << bestScore << endl;
-    cout << "Reprobados: " << reprovedNum << endl;
+    calificaciones = new double[numeroCalificaciones];
+
+    capturarCalificaciones(calificaciones, numeroCalificaciones);
+
+    promedio = calcularPromedio(calificaciones, numeroCalificaciones);
+
+    mejorCalificacion = encontrarMejorCalificacion(calificaciones, numeroCalificaciones);
+
+    numeroReprobados = contarReprobados(calificaciones, numeroCalificaciones);
+
+    cout << endl << "Promedio: " << promedio << endl;
+    cout << "Mejor calificación: " << mejorCalificacion << endl;
+    cout << "Número de reprobados: " << numeroReprobados << endl;
 
     return 0;
 }

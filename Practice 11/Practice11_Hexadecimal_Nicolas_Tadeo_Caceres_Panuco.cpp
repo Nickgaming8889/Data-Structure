@@ -19,6 +19,11 @@ int main(int argc, char const *argv[]) {
 
 void hex(int numeroDecimal, string &ptrHex) {
     ptrHex = " ";
+
+    if (numeroDecimal == 0) {
+        ptrHex = "0";
+    }
+
     while(numeroDecimal > 0) {
         ptrHex += "0123456789ABCDEF"[numeroDecimal%16];
         numeroDecimal /= 16;

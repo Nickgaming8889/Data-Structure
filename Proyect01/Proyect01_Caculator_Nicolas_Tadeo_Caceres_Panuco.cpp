@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <limits>
+#include <math.h>
 
 using namespace std;
 
@@ -12,19 +13,16 @@ double mult(double&, double&);
 int percent(int&, double&);
 int pow_(int&);
 int fact(int&);
-int pow_y(int&, int&);
-int root(int&);
-void coseno();
-void seno();
-void tangente();
-void binary();
+//int pow_y(int*, int*);
+void binary(int ,string&);
 void octal();
-void hexa();
+void hexa(int, string&);
 
 int main() {
     bool valid = false;
     int op, a, b;
     double c, d;
+    string Bin, Hex;
 
     do {
         //At this part you can see the option from de Main Menu...
@@ -39,8 +37,11 @@ int main() {
         cout << "8. Pow^n" << endl;
         cout << "9. Square Root" << endl;
         cout << "10. Cos" << endl;
-        cout << "11. Sen" << endl;
+        cout << "11. Sin" << endl;
         cout << "12. Tan" << endl;
+        cout << "13. Dec-Bin" << endl;
+        cout << "14. Dec-Hex" << endl;
+
 
         //Here you can select the operation that you want...
         cout << "Select the operation option: ";
@@ -58,6 +59,7 @@ int main() {
 
         switch(op) {
             case 1:
+                    cout << "Addition." << endl;
                     cout << "Give the numbers: ";
                     do {
                         cin >> c >> d;
@@ -74,6 +76,7 @@ int main() {
 
                 break;
             case 2:
+                    cout << "Substraction." << endl;
                     cout << "Give the numbers: ";
                     do {
                         cin >> c >> d;
@@ -89,6 +92,7 @@ int main() {
                     }while(!valid);
                 break;
             case 3:
+                    cout << "Divide." << endl;
                     cout << "Give the numbers: ";
                     do {
                         cin >> c >> d;
@@ -104,6 +108,7 @@ int main() {
                     }while(!valid);
                 break;
             case 4:
+                    cout << "Multiply." << endl;
                     cout << "Give the numbers: ";
                     do {
                         cin >> c >> d;
@@ -119,6 +124,7 @@ int main() {
                     }while(!valid);
                 break;
             case 5:
+                    cout << "Percent." << endl;
                     cout << "Give the number and the percent that you want on decimal point: ";
                     do {
                         cin >> a >> d;
@@ -134,6 +140,7 @@ int main() {
                     }while(!valid);
                 break;
             case 6:
+                    cout << "Pow." << endl;
                     cout << "Give the number: ";
                     do {
                         cin >> a;
@@ -149,6 +156,7 @@ int main() {
                     }while(!valid);
                 break;
             case 7:
+                    cout << "Factorial." << endl;
                     cout << "Give the number: ";
                     do {
                         cin >> a;
@@ -164,12 +172,13 @@ int main() {
                     }while(!valid);
                 break;
             case 8:
+                    cout << "Pow^n" << endl;
                     cout << "Give the number and the pow: ";
                     do {
                         cin >> a >> b;
                         if (cin.good()) {
                             valid = true;
-                            cout << "The result is: " << pow_y(a, b) << "\n\n";
+                            //cout << "The result is: " << pow_y(a, b) << "\n\n";
                         }
                         else {
                             cin.clear();
@@ -179,16 +188,102 @@ int main() {
                     }while(!valid);
                 break;
             case 9:
-
+                    cout << "Square Root." << endl;
+                    cout << "Give the number: ";
+                    do {
+                        cin >> a;
+                        if (cin.good()) {
+                            valid = true;
+                            cout << "The result is: " << sqrt(a) << "\n\n";
+                        }
+                        else {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Invalid input. Try again... " << endl;;
+                        }
+                    }while(!valid);
                 break;
             case 10:
-
+                    cout << "Cos." << endl;
+                    cout << "Give the grade: ";
+                    do {
+                        cin >> c;
+                        if (cin.good()) {
+                            valid = true;
+                            cout << "The result is: " << cos(c) << "\n\n";
+                        }
+                        else {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Invalid input. Try again... " << endl;;
+                        }
+                    }while(!valid);
                 break;
             case 11:
-
+                    cout << "Sin." << endl;
+                    cout << "Give the grade: ";
+                    do {
+                        cin >> c;
+                        if (cin.good()) {
+                            valid = true;
+                            cout << "The result is: " << sin(c) << "\n\n";
+                        }
+                        else {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Invalid input. Try again... " << endl;;
+                        }
+                    }while(!valid);
                 break;
             case 12:
-
+                    cout << "Tan." << endl;
+                    cout << "Give the grade: ";
+                    do {
+                        cin >> c;
+                        if (cin.good()) {
+                            valid = true;
+                            cout << "The result is: " << tan(c) << "\n\n";
+                        }
+                        else {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Invalid input. Try again... " << endl;;
+                        }
+                    }while(!valid);
+                break;
+            case 13:
+                    cout << "Dec-Bin." << endl;
+                    cout << "Give me a number: ";
+                    do {
+                        cin >> a;
+                        if (cin.good()) {
+                            valid = true;
+                            cout << "The binary result is: ";
+                            binary(a, Bin);
+                        }
+                        else {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Invalid input. Try again... " << endl;;
+                        }
+                    }while(!valid);
+                break;
+            case 14:
+                    cout << "Dec-Hex." << endl;
+                    cout << "Give me a number: ";
+                    do {
+                        cin >> a;
+                        if (cin.good()) {
+                            valid = true;
+                            cout << "The hexadecimal result is: ";
+                            hexa(a, Hex);
+                        }
+                        else {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Invalid input. Try again... " << endl;;
+                        }
+                    }while(!valid);
                 break;
             default:
                     cout << "Do you want to exit? 1[Y] 2[N] " ;
@@ -202,7 +297,7 @@ int main() {
                 break;
         }
 
-    }while(op != 13);
+    }while(op != 15);
 
     return 0;
 }
@@ -264,23 +359,31 @@ int fact(int &pa) {
     return *rlt;
 }
 
-int pow_y(int &pa, int &pb) {
-    
-}
-
-int root(int &pa) {
+/*int pow_y(int *pa, int *pb) {
 
     return 0;
+}*/
+
+void binary(int numeroDecimal, string &ptrBinary) {
+    ptrBinary = "";
+    for (int i = 7; i >= 0; i--) {
+        ptrBinary += "01"[numeroDecimal%2];
+        numeroDecimal /= 2;
+    }
+
+    reverse(ptrBinary.begin(), ptrBinary.end());
+    
+    cout << ptrBinary << endl;
 }
 
-void coseno() {
+void hexa(int numeroDecimal, string &ptrHex) {
+    ptrHex = " ";
+    while(numeroDecimal > 0) {
+        ptrHex += "0123456789ABCDEF"[numeroDecimal%16];
+        numeroDecimal /= 16;
+    }
 
-}
+    reverse(ptrHex.begin(), ptrHex.end());
 
-void seno() {
-
-}
-
-void tangente() {
-
+    cout << ptrHex << endl;
 }

@@ -12,21 +12,23 @@ double sub(double&, double&);
 double div(double&, double&);
 double mult(double&, double&);
 int percent(int&, double&);
-int pow_(int&);
-int fact(int&);
+int powL(double&);
+int fact(double&);
 int pown(int&, int&);
-void binary(int ,string&);
-void octal();
+void binary(int, string&);
+void octal(int, string&);
 void hexa(int, string&);
+void ansf(double &);
+void clearAns(int &);
 
 //Global variables...
-static double ans = 0;
+static double ans = 0, ans_;
 
 int main() {
     bool valid = false;
     int op, a, b;
     double c, d;
-    string Bin, Hex;
+    string Bin, Hex, Oct;
 
     do {
         //At this part you can see the option from de Main Menu...
@@ -45,6 +47,7 @@ int main() {
         cout << "12. Tan" << endl;
         cout << "13. Dec-Bin" << endl;
         cout << "14. Dec-Hex" << endl;
+        cout << "15. Dec-Oct" << endl;
 
 
         //Here you can select the operation that you want...
@@ -64,132 +67,345 @@ int main() {
         switch(op) {
             case 1:
                     cout << "Addition." << endl;
-                    cout << "Give the numbers: ";
-                    do {
-                        cin >> c >> d;
-                        if (cin.good()) {
-                            valid = true;
-                            cout << "The result is: " << add(c, d) << "\n\n";
-                        }
-                        else {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Invalid input. Try again... " << endl;;
-                        }
-                    }while(!valid);
+                    if (ans_ != 0) {
+                        cout << "Do you want to use ANS? 1[Y] 2[N] ";
+                        cin >> op;
 
+                        switch(op) {
+                            case 1:
+                                    cout << "Give me a number: ";
+                                    do {
+                                        cin >> d;
+                                        if (cin.good()) {
+                                            valid = true;
+                                            cout << "The result is: " << add(ans, d) << "\n\n";
+                                        }
+                                        else {
+                                            cin.clear();
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                            cout << "Invalid input. Try again... " << endl;;
+                                        }
+                                    }while(!valid);
+                                break;
+                            case 2:
+                                    clearAns(op);
+                                break;
+                        }
+                    }
+                    else {
+                        cout << "Give me the numbers: ";
+                        do {
+                            cin >> c >> d;
+                            if (cin.good()) {
+                                valid = true;
+                                cout << "The result is: " << add(c, d) << "\n\n";
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+                    }
                 break;
             case 2:
                     cout << "Substraction." << endl;
-                    cout << "Give the numbers: ";
-                    do {
-                        cin >> c >> d;
-                        if (cin.good()) {
-                            valid = true;
-                            cout << "The result is: " << sub(c, d) << "\n\n";
+                    if (ans_ != 0) {
+                        cout << "Do you want to use ANS? 1[Y] 2[N] ";
+                        cin >> op;
+
+                        switch(op) {
+                            case 1:
+                                    cout << "Give me a number: ";
+                                    do {
+                                        cin >> d;
+                                        if (cin.good()) {
+                                            valid = true;
+                                            cout << "The result is: " << sub(ans, d) << "\n\n";
+                                        }
+                                        else {
+                                            cin.clear();
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                            cout << "Invalid input. Try again... " << endl;;
+                                        }
+                                    }while(!valid);
+                                break;
+                            case 2:
+                                    clearAns(op);
+                                break;
                         }
-                        else {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Invalid input. Try again... " << endl;;
-                        }
-                    }while(!valid);
+                    }
+                    else {
+                        cout << "Give me the numbers: ";
+                        do {
+                            cin >> c >> d;
+                            if (cin.good()) {
+                                valid = true;
+                                cout << "The result is: " << sub(c, d) << "\n\n";
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+                    }
                 break;
             case 3:
                     cout << "Divide." << endl;
-                    cout << "Give the numbers: ";
-                    do {
-                        cin >> c >> d;
-                        if (cin.good()) {
-                            valid = true;
-                            cout << "The result is: " << div(c, d) << "\n\n";
+                    if (ans_ != 0) {
+                        cout << "Do you want to use ANS? 1[Y] 2[N] ";
+                        cin >> op;
+
+                        switch(op) {
+                            case 1:
+                                    cout << "Give me a number: ";
+                                    do {
+                                        cin >> d;
+                                        if (cin.good()) {
+                                            valid = true;
+                                            cout << "The result is: " << div(ans, d) << "\n\n";
+                                        }
+                                        else {
+                                            cin.clear();
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                            cout << "Invalid input. Try again... " << endl;;
+                                        }
+                                    }while(!valid);
+                                break;
+                            case 2:
+                                    clearAns(op);
+                                break;
                         }
-                        else {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Invalid input. Try again... " << endl;;
-                        }
-                    }while(!valid);
+                    }
+                    else {
+                        cout << "Give me the numbers: ";
+                        do {
+                            cin >> c >> d;
+                            if (cin.good()) {
+                                valid = true;
+                                cout << "The result is: " << div(c, d) << "\n\n";
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+                    }
                 break;
             case 4:
                     cout << "Multiply." << endl;
-                    cout << "Give the numbers: ";
-                    do {
-                        cin >> c >> d;
-                        if (cin.good()) {
-                            valid = true;
-                            cout << "The result is: " << mult(c, d) << "\n\n";
+                    if (ans_ != 0) {
+                        cout << "Do you want to use ANS? 1[Y] 2[N] ";
+                        cin >> op;
+
+                        switch(op) {
+                            case 1:
+                                    cout << "Give me a number: ";
+                                    do {
+                                        cin >> d;
+                                        if (cin.good()) {
+                                            valid = true;
+                                            cout << "The result is: " << mult(ans, d) << "\n\n";
+                                        }
+                                        else {
+                                            cin.clear();
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                            cout << "Invalid input. Try again... " << endl;;
+                                        }
+                                    }while(!valid);
+                                break;
+                            case 2:
+                                    clearAns(op);
+                                break;
                         }
-                        else {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Invalid input. Try again... " << endl;;
-                        }
-                    }while(!valid);
+                    }
+                    else {
+                        cout << "Give me the numbers: ";
+                        do {
+                            cin >> c >> d;
+                            if (cin.good()) {
+                                valid = true;
+                                cout << "The result is: " << mult(c, d) << "\n\n";
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+                    }
                 break;
             case 5:
                     cout << "Percent." << endl;
-                    cout << "Give the number and the percent that you want on decimal point: ";
-                    do {
-                        cin >> a >> d;
-                        if (cin.good()) {
-                            valid = true;
-                            cout << "The result is: " << percent(a, d) << "\n\n";
+                    if (ans_ != 0) {
+                        cout << "Do you want to use ANS? 1[Y] 2[N] ";
+                        cin >> op;
+
+                        switch(op) {
+                            case 1:
+                                    cout << "Give the percent on decimal point: ";
+                                    do {
+                                        cin >> d;
+                                        if (cin.good()) {
+                                            valid = true;
+                                            int ansv = static_cast<int>(ans);
+                                            cout << "The result is: " << percent(ansv, d) << "\n\n";
+                                        }
+                                        else {
+                                            cin.clear();
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                            cout << "Invalid input. Try again... " << endl;;
+                                        }
+                                    }while(!valid);
+                                break;
+                            case 2:
+                                    clearAns(op);
+                                break;
                         }
-                        else {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Invalid input. Try again... " << endl;;
-                        }
-                    }while(!valid);
+                    }
+                    else {
+                        cout << "Give the number and the percent on decimal point: ";
+                        do {
+                            cin >> a >> d;
+                            if (cin.good()) {
+                                valid = true;
+                                cout << "The result is: " << percent(a, d) << "\n\n";
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+                    }
                 break;
             case 6:
                     cout << "Pow." << endl;
-                    cout << "Give the number: ";
-                    do {
-                        cin >> a;
-                        if (cin.good()) {
-                            valid = true;
-                            cout << "The result is: " << pow_(a) << "\n\n";
+                    if (ans_ != 0) {
+                        cout << "Do you want to use ANS? 1[Y] 2[N] ";
+                        do {
+                            cin >> op;
+                            if (cin.good()) {
+                                valid = true;
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+
+                        switch(op) {
+                            case 1:
+                                    cout << "The Power result is: " << powL(ans) << "\n\n";
+                                break;
+                            case 2:
+                                    clearAns(op);
+                                break;
                         }
-                        else {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Invalid input. Try again... " << endl;;
-                        }
-                    }while(!valid);
+                    }
+                    else {
+                        cout << "Give the number: ";
+                        do {
+                            cin >> d;
+                            if (cin.good()) {
+                                valid = true;
+                                cout << "The result is: " << powL(d) << "\n\n";
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+                    }
                 break;
             case 7:
                     cout << "Factorial." << endl;
-                    cout << "Give the number: ";
-                    do {
-                        cin >> a;
-                        if (cin.good()) {
-                            valid = true;
-                            cout << "The result is: " << fact(a) << "\n\n";
+                    if (ans_ != 0) {
+                        cout << "Do you want to use ANS? 1[Y] 2[N] ";
+                        do {
+                            cin >> op;
+                            if (cin.good()) {
+                                valid = true;
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+
+                        switch(op) {
+                            case 1:
+                                    cout << "The Power result is: " << fact(ans) << "\n\n";
+                                break;
+                            case 2:
+                                    clearAns(op);
+                                break;
                         }
-                        else {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Invalid input. Try again... " << endl;;
-                        }
-                    }while(!valid);
+                    }
+                    else {
+                        cout << "Give the number: ";
+                        do {
+                            cin >> d;
+                            if (cin.good()) {
+                                valid = true;
+                                cout << "The result is: " << fact(d) << "\n\n";
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+                    }
                 break;
             case 8:
                     cout << "Pow^n" << endl;
-                    cout << "Give the number and the pow: ";
-                    do {
-                        cin >> a >> b;
-                        if (cin.good()) {
-                            valid = true;
-                            cout << "The result is: " << pown(a, b) << "\n\n";
+                    if (ans_ != 0) {
+                        cout << "Do you want to use ANS? 1[Y] 2[N] ";
+                        cin >> op;
+
+                        switch(op) {
+                            case 1:
+                                    cout << "Give me the power: ";
+                                    do {
+                                        cin >> b;
+                                        if (cin.good()) {
+                                            valid = true;
+                                            int ansv = static_cast<int>(ans);
+                                            cout << "The result is: " << pown(ansv, b) << "\n\n";
+                                        }
+                                        else {
+                                            cin.clear();
+                                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                            cout << "Invalid input. Try again... " << endl;;
+                                        }
+                                    }while(!valid);
+                                break;
+                            case 2:
+                                    clearAns(op);
+                                break;
                         }
-                        else {
-                            cin.clear();
-                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                            cout << "Invalid input. Try again... " << endl;;
-                        }
-                    }while(!valid);
+                    }
+                    else {
+                        cout << "Give the number and the power: ";
+                        do {
+                            cin >> a >> b;
+                            if (cin.good()) {
+                                valid = true;
+                                cout << "The result is: " << pown(a, b) << "\n\n";
+                            }
+                            else {
+                                cin.clear();
+                                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                                cout << "Invalid input. Try again... " << endl;;
+                            }
+                        }while(!valid);
+                    }
                 break;
             case 9:
                     cout << "Square Root." << endl;
@@ -289,6 +505,23 @@ int main() {
                         }
                     }while(!valid);
                 break;
+            case 15:
+                    cout << "Dec-Oct." << endl;
+                    cout << "Give me a number: ";
+                    do {
+                        cin >> a;
+                        if (cin.good()) {
+                            valid = true;
+                            cout << "The Octadecimal result is: ";
+                            octal(a, Oct);
+                        }
+                        else {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Invalid input. Try again... " << endl;;
+                        }
+                    }while(!valid);
+                break;
             default:
                     cout << "Do you want to exit? 1[Y] 2[N] " ;
                     cin >> op;
@@ -301,7 +534,7 @@ int main() {
                 break;
         }
 
-    }while(op != 15);
+    }while(op != 16);
 
     return 0;
 }
@@ -310,6 +543,8 @@ double add(double &pa, double &pb) {
     double *rlt = new double;   
     *rlt = pa + pb;
 
+    ansf(*rlt);
+
     return *rlt;
 }
 
@@ -317,13 +552,16 @@ double sub(double &pa, double &pb) {
     double *rlt = new double;   
     *rlt = pa - pb;
 
+    ansf(*rlt);
+
     return *rlt;
-    
 }
 
 double div(double &pa, double &pb) {
     double *rlt = new double;   
     *rlt = pa / pb;
+
+    ansf(*rlt);
 
     return *rlt;
 }
@@ -332,6 +570,8 @@ double mult(double &pa, double &pb) {
     double *rlt = new double;   
     *rlt = pa * pb;
 
+    ansf(*rlt);
+
     return *rlt;
 }
 
@@ -339,17 +579,23 @@ int percent(int &pa, double &pb) {
     int *rlt = new int;
     *rlt = pa * pb;
 
+    double t = static_cast<double>(*rlt);
+    ansf(t);
+    
     return *rlt;
 }
 
-int pow_(int &pa) {
-    int *rlt = new int;
+int powL(double &pa) {
+    double *rlt = new double;
     *rlt = pa *= pa;
 
+    ansf(*rlt);
+
+    int r = static_cast<int>(*rlt);
     return *rlt;
 }
 
-int fact(int &pa) {
+int fact(double &pa) {
     int *rlt = new int;
     int j = 1;
 
@@ -360,6 +606,9 @@ int fact(int &pa) {
         *rlt = j *= i;
     }
 
+    double t = static_cast<double>(*rlt);
+    ansf(t);
+
     return *rlt;
 }
 
@@ -369,6 +618,9 @@ int pown(int &pa, int &pb) {
     for (int i = 1; i <= pb; i++) {
         rlt *= pa;
     }
+
+    double t = static_cast<double>(rlt);
+    ansf(t);
 
     return rlt;
 }
@@ -397,6 +649,25 @@ void hexa(int numeroDecimal, string &ptrHex) {
     cout << ptrHex << endl;
 }
 
-void octal() {
+void octal(int numeroDecimal, string &ptrOct) {
+    ptrOct = " ";
+    while (numeroDecimal > 0) {
+        ptrOct += "01234567"[numeroDecimal%8];
+        numeroDecimal /= 8;
+    }
 
+    reverse(ptrOct.begin(), ptrOct.end());
+    
+    cout << ptrOct << endl;
+}
+
+void ansf(double &pans) {
+    ans = pans;
+    ans_ = ans;
+}
+
+void clearAns(int &op_) {
+    if (op_ == 2) {
+        ans_ = 0;
+    }
 }

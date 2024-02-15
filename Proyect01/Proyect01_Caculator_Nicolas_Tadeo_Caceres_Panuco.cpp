@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//Funtions call's...
 double add(double&, double&);
 double sub(double&, double&);
 double div(double&, double&);
@@ -13,10 +14,13 @@ double mult(double&, double&);
 int percent(int&, double&);
 int pow_(int&);
 int fact(int&);
-//int pow_y(int*, int*);
+int pown(int&, int&);
 void binary(int ,string&);
 void octal();
 void hexa(int, string&);
+
+//Global variables...
+static double ans = 0;
 
 int main() {
     bool valid = false;
@@ -178,7 +182,7 @@ int main() {
                         cin >> a >> b;
                         if (cin.good()) {
                             valid = true;
-                            //cout << "The result is: " << pow_y(a, b) << "\n\n";
+                            cout << "The result is: " << pown(a, b) << "\n\n";
                         }
                         else {
                             cin.clear();
@@ -359,10 +363,15 @@ int fact(int &pa) {
     return *rlt;
 }
 
-/*int pow_y(int *pa, int *pb) {
+int pown(int &pa, int &pb) {
+    int rlt = 1;
 
-    return 0;
-}*/
+    for (int i = 1; i <= pb; i++) {
+        rlt *= pa;
+    }
+
+    return rlt;
+}
 
 void binary(int numeroDecimal, string &ptrBinary) {
     ptrBinary = "";
@@ -386,4 +395,8 @@ void hexa(int numeroDecimal, string &ptrHex) {
     reverse(ptrHex.begin(), ptrHex.end());
 
     cout << ptrHex << endl;
+}
+
+void octal() {
+
 }

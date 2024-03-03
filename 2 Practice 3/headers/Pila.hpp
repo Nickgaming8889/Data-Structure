@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <windows.h>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class Pila {
         void viewPila();
         bool pilaLlena();
         bool pilaVacia();
+        void gotoyx(int, int);
         ~Pila();
 };
 
@@ -60,6 +62,17 @@ bool Pila::pilaLlena() {
 bool Pila::pilaVacia() {
 
     return (this->tope == 0);
+}
+
+void gotoxy(int x, int y) {
+    HANDLE Ventana;
+    COORD Coordenates;
+    Ventana = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    Coordenates.X = x;
+    Coordenates.Y = y;
+
+    SetConsoleCursorPosition(Ventana, Coordenates);
 }
 
 Pila::~Pila() {

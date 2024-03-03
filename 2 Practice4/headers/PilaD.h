@@ -4,14 +4,21 @@
 #include <iostream>
 using namespace std;
 
-class PilaD
-{
-private:
-    /* data */
-public:
-    PilaD(/* args */);
-    void getSome();
-    ~PilaD();
+class PilaD {
+    private:
+        //Attributes...
+        int max;
+        int *arr;
+        int top;
+        
+    public:
+        //Methods...
+        PilaD(/* args */);
+        void push(int*);
+        void pop();
+        void viewStack();
+        bool empty();
+        ~PilaD();
 };
 
 #endif

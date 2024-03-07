@@ -12,14 +12,14 @@ void PilaD::push(int *value) {
         arr[top] = *value;
         top++;
     }
-    else if(top == max) {
+    /*else if(top == max) {
         max *= 2;
         int *t = new int(max);
 
         for(int i = 0; i < top; i++) {
             t[i] = arr[i];
         }
-    }
+    }*/
     else
         cout << "The stack is full" << endl;
 }

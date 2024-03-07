@@ -7,7 +7,7 @@ using namespace std;
 class PilaD {
     private:
         //Attributes...
-        int max;
+        int max, minEle = 0;
         int *arr;
         int top;
         

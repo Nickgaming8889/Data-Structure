@@ -3,9 +3,15 @@
 
 class Cola {
     private:
-        /* data */
+        //Attributes...
+        int front;
+        int rear;
+
     public:
         Cola(/* args */);
+        void push();
+        void pop();
+        void viewQueue(); 
         ~Cola();
 };
 

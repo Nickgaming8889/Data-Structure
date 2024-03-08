@@ -8,20 +8,34 @@ PilaD::PilaD() {
 
 //Push...
 void PilaD::push(int *value) {
-    if(empty() == true) {
-        arr[top] = *value;
-        top++;
-    }
-    /*else if(top == max) {
-        max *= 2;
-        int *t = new int(max);
-
-        for(int i = 0; i < top; i++) {
-            t[i] = arr[i];
+     if (empty()) {
+            minEle = *value;
+            arr[top] = *value;
+            top++;
         }
-    }*/
-    else
-        cout << "The stack is full" << endl;
+        // If array is full
+        else if (top == max) {
+            max *= 2;
+            int* temp = new int(max);
+            for (int i = 0; i < top; i++) {
+                temp[i] = arr[i];
+            }
+ 
+            // If x is less than minEle
+            if (*value < minEle) {
+                temp[top] = 2 * *value - minEle;
+ 
+                minEle = *value;
+ 
+                top++;
+            }
+            else {
+                temp[top] = *value;
+                top++;
+            }
+
+            arr = temp;
+        }
 }
 
 //Pop...

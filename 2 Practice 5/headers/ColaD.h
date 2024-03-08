@@ -5,21 +5,21 @@
 using namespace std;
 
 class ColaD {
-    
-    class Node {
+    private:
+        //Attributes...
+        class Node {
+        public:
         int data;
         Node *next;
 
-        public:
             Node(int value) {
                 data = value;
                 next = nullptr;
             }
-    };
-    
-    private:
-        //Attributes...
-        Node *front, *rear;
+        };
+        
+        Node* front;
+        Node* rear;
 
     public:
         //Methods...
@@ -27,6 +27,7 @@ class ColaD {
         void enqueue(int);
         void dequeue();
         bool empty();
+        void viewQueue();
         ~ColaD();
 };
 

@@ -1,5 +1,9 @@
 #include <iostream>
+#include <math.h>
+#include <cstdlib>
 #include "../headers/PilaD.h"
+
+int validation(int);
 
 int main(int argc, char const *argv[]) {
     PilaD p;
@@ -15,11 +19,13 @@ int main(int argc, char const *argv[]) {
 
         cout << "Select an option: ";
         cin >> op;
+        validation(op);
 
         switch (op) {
         case 1:
                 cout << "Introduce the value: ";
                 cin >> value_;
+                validation(value_);
                 ptr = &value_;
 
                 p.push(ptr);
@@ -38,4 +44,20 @@ int main(int argc, char const *argv[]) {
     }while(op != 4);
 
     return 0;
+}
+
+int validation(int op_) {
+    bool valid = false;
+    
+    do {
+            if (cin.good())
+                valid = true;
+            else {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Try again... ";
+            }
+        }while(!valid);
+
+    return op_;
 }

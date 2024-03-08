@@ -1,11 +1,11 @@
 #include <cstdlib>
 #include <math.h>
-#include "../headers/ColaD.h"
+#include "../headers/Cola.h"
 
 int validation(int);
 
 int main(int argc, char const *argv[]) {
-    ColaD* p = new ColaD();
+    Cola* p = new Cola();
     int op, v;
 
     do {

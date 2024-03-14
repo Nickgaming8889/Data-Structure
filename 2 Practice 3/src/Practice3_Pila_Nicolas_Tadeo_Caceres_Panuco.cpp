@@ -1,5 +1,7 @@
 #include "../headers/Pila.hpp"
 
+int validation(int);
+
 int main(int argc, char const *argv[]) {
     int op, op1, valor;
     Pila p;
@@ -14,11 +16,14 @@ int main(int argc, char const *argv[]) {
 
         cout << "Select an option: ";
         cin >> op;
+        validation(op);
 
         switch (op) {
         case 1:
             cout << "Introduce the value: ";
             cin >> valor;
+            validation(valor);
+
             p.push(valor);
         break;
         case 2:
@@ -31,6 +36,7 @@ int main(int argc, char const *argv[]) {
         case 4:
             cout << "Do you want to exit? 2[Y] 1[N] ";
             cin >> op1;
+            validation(op1);
         break;
         default:
         break;
@@ -39,4 +45,20 @@ int main(int argc, char const *argv[]) {
     } while (op1 != 2);
 
     return 0;
+}
+
+int validation(int op_) {
+    bool valid = false;
+    
+    do {
+            if (cin.good())
+                valid = true;
+            else {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Try again... ";
+            }
+        }while(!valid);
+
+    return op_;
 }

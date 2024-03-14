@@ -12,7 +12,7 @@ int main(int argc, char const *argv[]) {
         cout << "\nMain Menu." << endl;
         cout << "1. Enqueue." << endl;
         cout << "2. Dequeue." << endl;
-        cout << "3. Empty." << endl;
+        cout << "3. View." << endl;
         cout << "4. Exit." << endl; 
 
         cout << "Select an option: ";

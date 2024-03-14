@@ -1,5 +1,7 @@
 #include "../headers/Cola.h"
 
+#define MAX_SIZE 10
+
 Cola::Cola() {
     front = 0;
     rear = 0;
@@ -21,10 +23,11 @@ void Cola::dequeue() {
     }
     else {
         int value = arr[front];
-        if(front == rear)
-            front = rear = 0;
-        else
-            front = (front + 1);
+        if (front == rear) {
+        front = rear = 0;
+        } else {
+        front = (front) % MAX_SIZE; 
+        }
     }
 }
 
@@ -33,7 +36,7 @@ bool Cola::empty() {
 }
 
 void Cola::viewQueue() {
-    for(int i = front; i <= rear; i++) {
+    for(int i = front + 1; i <= rear; i++) {
         cout << arr[i] << endl;
     }
 

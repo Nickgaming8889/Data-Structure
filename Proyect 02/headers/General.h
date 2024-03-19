@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class General {
+class General: public Node {
     private:
         //Attributes...
         Node* front;
@@ -15,6 +15,7 @@ class General {
     public:
         //Methods...
         General();
+        void testing();
         ~General();
 };
 

@@ -11,6 +11,7 @@ class Node {
         Node *next;
 
     public:
+        //Methods...
         Node();
         Node(int);
         ~Node();

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class General: public Node {
+class General: virtual public Node {
     private:
         //Attributes...
         Node* front;

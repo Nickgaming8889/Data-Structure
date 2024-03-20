@@ -10,7 +10,7 @@ void General::testing() {
     int* pa = &a;
     newNode->setData(pa);
 
-    cout << newNode->getData() << endl;
+    cout << *newNode->getData() << endl;
 }
 
 General::~General() {

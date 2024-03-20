@@ -1,8 +1,9 @@
 #ifndef CLIENTA_H
 #define CLIENTA_H
 
-#include "Node.h"
 #include <iostream>
+#include "Node.h"
+/*#include "General.h"*/
 
 using namespace std;
 

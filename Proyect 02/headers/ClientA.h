@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include "Node.h"
-/*#include "General.h"*/
+#include "General.h"
 
 using namespace std;
 
-class ClientA {
+class ClientA: public General {
     private:
         //Attributes...
         Node* front;
@@ -16,6 +16,11 @@ class ClientA {
     public:
         //Methods...
         ClientA();
+        void enqueue(int*, string);
+        void dequeue();
+        void cloneQueue();
+        bool empty();
+        void viewClientA();
         ~ClientA();
 };
 

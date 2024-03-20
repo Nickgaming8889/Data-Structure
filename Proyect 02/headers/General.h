@@ -2,11 +2,14 @@
 #define GENERAL_H
 
 #include <iostream>
+#include <fstream>
+#include <ctime>
+#include <conio.h>
 #include "Node.h"
 
 using namespace std;
 
-class General: virtual public Node {
+class General: public Node {
     private:
         //Attributes...
         Node* front;
@@ -15,7 +18,10 @@ class General: virtual public Node {
     public:
         //Methods...
         General();
-        void testing();
+        void enqueue(int*, string);
+        void dequeue();
+        bool empty();
+        void viewGeneral();
         ~General();
 };
 

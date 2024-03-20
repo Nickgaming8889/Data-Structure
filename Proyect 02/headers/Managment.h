@@ -1,13 +1,13 @@
-#ifndef BANK_H
-#define BANK_K
+#ifndef MANAGMENT_H
+#define MANAGMENT_H
 
 #include <iostream>
 #include "Node.h"
-/*#include "General.h"*/ 
+#include "General.h"
 
 using namespace std;
 
-class Managment {
+class Managment: public General {
     private:
         //Attributes...
         Node* front;
@@ -16,6 +16,11 @@ class Managment {
     public:
         //Methods...
         Managment();
+        void enqueue(int*, string);
+        void dequeue();
+        void cloneQueue();
+        bool empty();
+        void viewManagment();
         ~Managment();
 
 };

@@ -6,14 +6,16 @@ using namespace std;
 
 class Node {
     private:
-        //Attributes...
-        int *data;
-        Node *next;
 
     public:
+        //Attributes...
+        int *data;
+        string name;
+        Node *next;
+
         //Methods...
         Node();
-        Node(int);
+        Node(int, string);
         ~Node();
 
         void setData(int*);

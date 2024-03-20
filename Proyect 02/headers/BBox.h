@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include "Node.h"
+#include "General.h"
 
 using namespace std;
 
-class BBox {
+class BBox: public General {
     private:
         //Attributes...
         Node* front;
@@ -15,6 +16,11 @@ class BBox {
     public:
         //Methods...
         BBox();
+        void enqueue(int*, string);
+        void dequeue();
+        void cloneQueue();
+        bool empty();
+        void viewBBox();
         ~BBox();
 };
 

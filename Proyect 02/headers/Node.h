@@ -11,11 +11,12 @@ class Node {
         //Attributes...
         int *data;
         string name;
+        string section;
         Node *next;
 
         //Methods...
         Node();
-        Node(int, string);
+        Node(int, string, string);
         ~Node();
 
         void setData(int*);

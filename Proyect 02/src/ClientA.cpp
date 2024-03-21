@@ -30,10 +30,6 @@ void ClientA::dequeue() {
     }
 }
 
-void ClientA::cloneQueue() {
-    
-}
-
 bool ClientA::empty() {
     return (this->front == nullptr);
 }

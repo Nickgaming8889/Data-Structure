@@ -18,7 +18,6 @@ class BBox: public General {
         BBox();
         void enqueue(int*, string);
         void dequeue();
-        void cloneQueue();
         bool empty();
         void viewBBox();
         ~BBox();

@@ -18,7 +18,6 @@ class Managment: public General {
         Managment();
         void enqueue(int*, string);
         void dequeue();
-        void cloneQueue();
         bool empty();
         void viewManagment();
         ~Managment();

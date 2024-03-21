@@ -4,8 +4,11 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-#include <conio.h>
+//#include <conio.h>
 #include "Node.h"
+#include "ClientA.h"
+#include "Managment.h"
+#include "BBox.h"
 
 using namespace std;
 
@@ -18,8 +21,9 @@ class General: public Node {
     public:
         //Methods...
         General();
-        void enqueue(int*, string);
+        void enqueue(int*, string, string);
         void dequeue();
+        void moveQueue(General*);
         bool empty();
         void viewGeneral();
         ~General();

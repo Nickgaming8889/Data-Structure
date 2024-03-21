@@ -18,7 +18,6 @@ class ClientA: public General {
         ClientA();
         void enqueue(int*, string);
         void dequeue();
-        void cloneQueue();
         bool empty();
         void viewClientA();
         ~ClientA();

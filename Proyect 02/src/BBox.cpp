@@ -30,7 +30,7 @@ void BBox::dequeue() {
     }
 }
 
-void BBox::cloneQueue() {
+void BBox::cloneQueue(General* p, BBox* q) {
     
 }
 

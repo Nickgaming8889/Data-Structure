@@ -6,10 +6,11 @@ Node::Node() {
     this->next = nullptr;
 }
 
-Node::Node(int value, string n) {
+Node::Node(int value, string n, string sect) {
     data = new int;
     *data = value;
     name = n;
+    section = sect;
     next = nullptr;
 }
 

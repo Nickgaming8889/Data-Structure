@@ -5,8 +5,8 @@ General::General() {
     rear = nullptr;
 }
 
-void General::enqueue(int *value, string n) {
-    Node* newNode = new Node(*value, n);
+void General::enqueue(int *value, string n, string s) {
+    Node* newNode = new Node(*value, n, s);
     if(empty()) {
         front = rear = newNode;
     }
@@ -30,6 +30,11 @@ void General::dequeue() {
     }
 }
 
+void General::moveQueue(General* p) {
+    Node* temp;
+    temp = p->rear;
+}
+
 bool General::empty() {
     return (this->front == nullptr);
 }
@@ -37,7 +42,7 @@ bool General::empty() {
 void General::viewGeneral() {
     Node* temp = front;
     while(temp != nullptr) {
-        cout << *temp->data << " " << temp->name << endl;
+        cout << *temp->data << " " << temp->section << " " << temp->name << endl;
         temp = temp->next;
     }
 }

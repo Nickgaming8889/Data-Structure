@@ -1,0 +1,5 @@
+Nick    Gerencia
+Toto    Atencion Clientes
+Robert  Caja
+Ramiro  Atencion Clientes
+Pedro   Gerencia

@@ -30,7 +30,7 @@ void Managment::dequeue() {
     }
 }
 
-void Managment::cloneQueue() {
+void Managment::cloneQueue(General* p, Managment* q) {
     
 }
 

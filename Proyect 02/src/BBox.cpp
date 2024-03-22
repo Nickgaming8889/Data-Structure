@@ -5,8 +5,8 @@ BBox::BBox() {
     this->rear = nullptr;
 }
 
-void BBox::enqueue(int *value, string n) {
-    Node* newNode = new Node(*value, n);
+void BBox::enqueue(int *value, string* n, string* s) {
+    Node* newNode = new Node(*value, *n, *s);
     if(empty()) {
         front = rear = newNode;
     }
@@ -28,10 +28,6 @@ void BBox::dequeue() {
         if(front == nullptr)
             rear == nullptr;
     }
-}
-
-void BBox::cloneQueue(General* p, BBox* q) {
-    
 }
 
 bool BBox::empty() {

@@ -5,8 +5,8 @@ ClientA::ClientA() {
     this->rear = nullptr;
 }
 
-void ClientA::enqueue(int *value, string n) {
-    Node* newNode = new Node(*value, n);
+void ClientA::enqueue(int *value, string* n, string* s) {
+    Node* newNode = new Node(*value, *n, *s);
     if(empty()) {
         front = rear = newNode;
     }

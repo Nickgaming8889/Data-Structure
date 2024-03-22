@@ -21,7 +21,7 @@ class General: public Node {
     public:
         //Methods...
         General();
-        void enqueue(int*, string, string);
+        void enqueue(int*, string*, string*);
         void dequeue();
         void moveQueue(General*);
         bool empty();

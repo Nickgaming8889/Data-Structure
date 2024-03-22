@@ -5,8 +5,8 @@ General::General() {
     rear = nullptr;
 }
 
-void General::enqueue(int *value, string n, string s) {
-    Node* newNode = new Node(*value, n, s);
+void General::enqueue(int *value, string* n, string* s) {
+    Node* newNode = new Node(*value, *n, *s);
     if(empty()) {
         front = rear = newNode;
     }

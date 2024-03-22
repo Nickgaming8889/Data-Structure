@@ -5,8 +5,8 @@ Managment::Managment() {
     this->rear = nullptr;
 }
 
-void Managment::enqueue(int *value, string n) {
-    Node* newNode = new Node(*value, n);
+void Managment::enqueue(int *value, string* n, string* s) {
+    Node* newNode = new Node(*value, *n, *s);
     if(empty()) {
         front = rear = newNode;
     }
@@ -28,10 +28,6 @@ void Managment::dequeue() {
         if(front == nullptr)
             rear == nullptr;
     }
-}
-
-void Managment::cloneQueue(General* p, Managment* q) {
-    
 }
 
 bool Managment::empty() {

@@ -16,7 +16,7 @@ class ClientA: public General {
     public:
         //Methods...
         ClientA();
-        void enqueue(int*, string);
+        void enqueue(int*, string*, string*);
         void dequeue();
         bool empty();
         void viewClientA();

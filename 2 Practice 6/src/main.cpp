@@ -1,10 +1,10 @@
-#include "../headers/ListD.h"
+#include "../headers/ListD.hpp"
 
 int validation(int);
 
 int main(int argc, char const *argv[]) {
-    ListD *p = new ListD();
-    int op, ip; string n;
+    ListaContactos* p= new ListaContactos;
+    int op, op1, ip; string n, nn;
 
     do {
         cout << "Menu..." << endl;
@@ -22,21 +22,54 @@ int main(int argc, char const *argv[]) {
             case 1:
                     cout << "ID Contact: ";
                     cin >> ip;
-                    int *ip_ = &ip;
                     cout << "Name Contact: ";
                     cin >> n;
-                    string *n_ = &n;
-                    p->addNode(ip_, n_);
+                    
+                    p->agregarContacto(n, ip);
+
                 break;
             case 2:
                     cout << "Contact Delete" << endl;
-                    p->subNode();
+                    cout << "Give me the name: ";
+                    cin >> n;
+                    p->eliminarContacto(n);
                 break;
             case 3:
-                    
+                    cout << "1. By Name." << endl;
+                    cout << "2. By ID." << endl;
 
+                    cout << "Select an Option: ";
+                    cin >> op1;
+                    validation(op1);
+
+                    switch(op1) {
+                        case 1:
+                                cout << "Enter the Name: ";
+                                cin >> n;
+                                p->buscarContactoPorNombre(n);
+                            break;
+                        case 2:
+                                cout << "Enter the ID: ";
+                                cin >> ip;
+
+                                p->buscarContactoPorID(ip);
+
+                            break;
+                        default:
+
+                            break;
+                    }
                 break;
             case 4:
+                    cout << "Modify Data..." << endl;
+                    cout << "Actual Name: ";
+                    cin >> n;
+                    cout << "New Name: ";
+                    cin >> nn;
+                    cout << "New ID: ";
+                    cin >> ip;
+
+                    p->modificarContacto(n, nn, ip);
 
                 break;
             default:

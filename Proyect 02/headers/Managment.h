@@ -16,7 +16,7 @@ class Managment: public General {
     public:
         //Methods...
         Managment();
-        void enqueue(int*, string);
+        void enqueue(int*, string*, string*);
         void dequeue();
         bool empty();
         void viewManagment();

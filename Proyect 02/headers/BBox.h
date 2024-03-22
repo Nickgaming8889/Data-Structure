@@ -16,7 +16,7 @@ class BBox: public General {
     public:
         //Methods...
         BBox();
-        void enqueue(int*, string);
+        void enqueue(int*, string*, string*);
         void dequeue();
         bool empty();
         void viewBBox();

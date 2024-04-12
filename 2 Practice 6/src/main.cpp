@@ -10,9 +10,12 @@ int main(int argc, char const *argv[]) {
         cout << "Menu..." << endl;
         cout << "1. Add Contact." << endl;
         cout << "2. Delete Contact." << endl;
-        cout << "3. Find Contact." << endl;
-        cout << "4. Modify." << endl;
-        cout << "5. Exit" << endl;
+        cout << "3. Ordenar." << endl;
+        cout << "4. Find Contact." << endl;
+        cout << "5. Modify." << endl;
+        cout << "6. Vaciar." << endl;
+        cout << "7. Mostrar." << endl;
+        cout << "8. Exit." << endl;
 
         cout << "Select an Option: ";
         cin >> op;
@@ -35,6 +38,9 @@ int main(int argc, char const *argv[]) {
                     p->eliminarContacto(n);
                 break;
             case 3:
+                    p->ordenarAlfabeticamente();
+                break;
+            case 4:
                     cout << "1. By Name." << endl;
                     cout << "2. By ID." << endl;
 
@@ -60,7 +66,7 @@ int main(int argc, char const *argv[]) {
                             break;
                     }
                 break;
-            case 4:
+            case 5:
                     cout << "Modify Data..." << endl;
                     cout << "Actual Name: ";
                     cin >> n;
@@ -72,12 +78,18 @@ int main(int argc, char const *argv[]) {
                     p->modificarContacto(n, nn, ip);
 
                 break;
+            case 6:
+                    p->vaciarLista();
+                break;
+            case 7:
+                    p->mostrarContactos();
+                break;
             default:
 
                 break;
         }
 
-    } while(op != 5);
+    } while(op != 8);
     
     return 0;
 }

@@ -8,18 +8,16 @@ class User {
     private:
         //Attributes...
         string name;
-        string email;
         int id;
     public:
         //Methods...
         User();
+        void showUsers();
         ~User();
 
         //Getters & Setters...
         string getName();
         void setName(string);
-        string getEmail();
-        void setEmail(string);
         int getID();
         void setID(int);
 };
@@ -43,6 +41,10 @@ class CList : public Node {
     public:
         //Methods...
         CList();
+        Node* search(int);
+        Node* searchName(string);
+        void push(string, int);
+        void pop(int);
         ~CList();
 };
 

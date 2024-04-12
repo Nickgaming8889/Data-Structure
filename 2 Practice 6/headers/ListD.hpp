@@ -71,6 +71,39 @@ public:
         delete actual;
     }
 
+    void ordenarAlfabeticamente() {
+    if (primero == nullptr || primero->siguiente == nullptr) {
+        // Si la lista está vacía o solo tiene un elemento, ya está ordenada
+        return;
+    }
+
+    Nodo* actual = primero;
+    Nodo* siguienteNodo = nullptr;
+
+    string tempNombre;
+    int tempID;
+
+    while (actual != nullptr) {
+        siguienteNodo = actual->siguiente;
+
+        while (siguienteNodo != nullptr) {
+            if (actual->nombre > siguienteNodo->nombre) {
+                // Intercambiar los datos de los nodos
+                tempNombre = actual->nombre;
+                tempID = actual->id;
+
+                actual->nombre = siguienteNodo->nombre;
+                actual->id = siguienteNodo->id;
+
+                siguienteNodo->nombre = tempNombre;
+                siguienteNodo->id = tempID;
+            }
+            siguienteNodo = siguienteNodo->siguiente;
+        }
+        actual = actual->siguiente;
+    }
+}
+
     Nodo* buscarContactoPorNombre(string nombre) {
         if (primero == nullptr) {
             return nullptr;
@@ -80,6 +113,8 @@ public:
         while (actual != nullptr && actual->nombre != nombre) {
             actual = actual->siguiente;
         }
+
+        actual->mostrarDatos();
 
         return actual;
     }
@@ -93,6 +128,8 @@ public:
         while (actual != nullptr && actual->id != id) {
             actual = actual->siguiente;
         }
+
+        actual->mostrarDatos();
 
         return actual;
     }
@@ -122,6 +159,19 @@ public:
         contacto->nombre = nuevoNombre;
         contacto->id = nuevoID;
     }
+
+    void vaciarLista() {
+    Nodo* actual = primero;
+    Nodo* siguienteNodo = nullptr;
+
+    while (actual != nullptr) {
+        siguienteNodo = actual->siguiente;
+        delete actual;
+        actual = siguienteNodo;
+    }
+
+    primero = nullptr; // Establecer el puntero del primer nodo a nullptr, indicando que la lista está vacía
+}
 };
 
 #endif

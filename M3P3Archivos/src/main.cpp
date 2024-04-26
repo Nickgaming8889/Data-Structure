@@ -1,4 +1,8 @@
 #include "../header/files.h"
+#include <cstdlib>
+#include <math.h>
+
+int validation(int op_);
 
 int main() {
     int op, op1;
@@ -12,6 +16,7 @@ int main() {
 
         cout << "Select option: ";
         cin >> op;
+        validation(op);
 
         switch (op) {
         case 1:
@@ -26,4 +31,20 @@ int main() {
         }
     } while (op != 3);
     
+}
+
+int validation(int op_) {
+    bool valid = false;
+    
+    do {
+            if (cin.good())
+                valid = true;
+            else {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Try again... " << endl;
+            }
+        }while(!valid);
+
+    return op_;
 }

@@ -1,0 +1,207 @@
+#include <iostream>
+#include <fstream>
+#include <cstring>
+using namespace std;
+
+class customer {
+private:
+    
+public:
+    int id;
+    char name[30];
+    char phone[30];
+    
+    void setId(int);
+    int getId();
+    void setName(char *);
+    char * getName();
+    void setPhone(char *);
+    char * getPhone();
+};
+
+void customer::setId(int id) {
+    this->id = id;
+}
+
+int customer::getId() {
+    return this->id;
+}
+
+void customer::setName(char * name) {
+    strcpy(this->name, name);
+}
+
+char* customer::getName() {
+    return this->name;
+}
+
+void customer::setPhone(char * phone) {
+    strcpy(this->phone, phone);
+}
+
+char* customer::getPhone() {
+    return this->phone;
+}
+
+class File {
+private:
+
+public:
+    void saveTo(customer);
+    void search(customer);
+    void edit(customer);
+    void remove(customer);
+    void showAll();
+    void readCustomer(customer&);
+};
+
+void File::readCustomer(customer& ctr) {
+  ifstream file("file.txt");
+  if (file.is_open()) {
+    file >> ctr.id >> ctr.name >> ctr.phone;
+    // Handle potential errors like missing data or invalid format
+    file.close();
+  } else {
+    // Handle file opening error
+  }
+}
+
+
+void File::saveTo(customer ctr) {
+    ofstream file;
+    file.open("file.txt", ios::app);
+    file << ctr.getId() << endl;
+    file << ctr.getName() << endl;
+    file << ctr.getPhone() << endl;
+    file.close();
+}
+
+void File::search(customer ctr) {
+    ifstream file;
+    char id[10], name[30], phone[30];
+    file.open("file.txt", ios::in);
+    while (file >> id >> name >> phone) {
+        if (ctr.getId() == atoi(id)) {
+            cout << id << " " << name << " " << phone << endl;
+            return;
+        }
+    }
+    cout << "Customer not found" << endl;
+}
+
+void File::edit(customer ctr) {
+    ifstream file;
+    ofstream temp;
+    char id[10], name[30], phone[30];
+    file.open("file.txt", ios::in);
+    temp.open("temp.txt", ios::out);
+
+    cout << "Enter new id, name, and phone: ";
+    int newId;
+    char newName[30], newPhone[30];
+    cin >> newId >> newName >> newPhone;
+
+    while (file >> id >> name >> phone) {
+        if (ctr.getId() == atoi(id)) {
+            temp << newId << endl;
+            temp << newName << endl;
+            temp << newPhone << endl;
+        } else {
+            temp << id << endl;
+            temp << name << endl;
+            temp << phone << endl;
+        }
+    }
+    file.close();
+    temp.close();
+    rename("temp.txt", "file.txt");
+}
+
+void File::remove(customer ctr) {
+    ifstream file;
+    ofstream temp;
+    char id[10], name[30], phone[30];
+    file.open("file.txt", ios::in);
+    temp.open("temp.txt", ios::out);
+
+    while (file >> id >> name >> phone) {
+        if (ctr.getId() != atoi(id)) {
+            temp << id << endl;
+            temp << name << endl;
+            temp << phone << endl;
+        }
+    }
+    file.close();
+    temp.close();
+    rename("temp.txt", "file.txt");
+}
+
+void File::showAll() {
+    ifstream file;
+    char id[10], name[30], phone[30];
+    file.open("file.txt", ios::in);
+    while (file >> id >> name >> phone) {
+        cout << id << " " << name << " " << phone << endl;
+    }
+    file.close();
+}
+
+int main(int argc, char** argv) {
+    int opc = 0, id = 0;
+    char name[30], phone[30];
+    File f;
+    customer ctr;
+
+    do {
+        system("clear");
+        cout << "Menu" << endl;
+        cout << "1) Save" << endl;
+        cout << "2) Search" << endl;
+        cout << "3) Edit" << endl;
+        cout << "4) Remove" << endl;
+        cout << "5) Show" << endl;
+        cout << "Select an option: ";
+        cin >> opc;
+
+        switch (opc) {
+        case 1:
+            cout << "Enter Id: ";
+            cin >> id;
+            cout << "Enter Name: ";
+            cin >> name;
+            cout << "Enter Phone: ";
+            cin >> phone;
+
+            ctr.setId(id);
+            ctr.setName(name);
+            ctr.setPhone(phone);
+            f.saveTo(ctr);
+            break;
+        case 2:
+            cout << "Enter id to search: ";
+            cin >> id;
+
+            ctr.setId(id);
+            f.search(ctr);
+            break;
+        case 3:
+            cout << "Id to edit: ";
+            cin >> id;
+
+            ctr.setId(id);
+            f.edit(ctr);
+            break;
+        case 4:
+            
+            break;
+        case 5:
+
+            break;
+        default:
+
+            break;
+        }
+    }while(opc != 6);
+
+    return 0;
+}
